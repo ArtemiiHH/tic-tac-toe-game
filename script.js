@@ -6,17 +6,21 @@ const gameBoard = (function Gameboard() {
     let cellId = 0;
 
     // Get 2D array
-    for (let i = 0; i < rows; i++) {
-        board[i] = [];
+    return function updateCell() {
+        for (let i = 0; i < rows; i++) {
+            board[i] = [];
 
-        for (let j = 0; j < columns; j++) {
-            board[i][j] = cellId++;
+            for (let j = 0; j < columns; j++) {
+                board[i][j] = cellId++;
+            }
+
+            return cellId;
         }
+        // Display 2D array
+        return board;
     }
-    // Display 2D array
-    console.log(board);
 
-    // const getBoard = () => board;
+    const getBoard = () => board;
 })();
 
 
@@ -45,13 +49,21 @@ const gameController = (function GameController() {
     const playerOne = new Player('Tim', 'X');
     const playerTwo = new Player('John', 'O');
 
-    let currentPlayer = playerOne;
+    // Testing code:
+    // let currentPlayer = playerOne;
 
-    currentPlayer = (currentPlayer === playerOne) ? playerTwo : playerOne;
+    // for (let i = 0; i < board; i++) {
+    //     let currentCell = [];
 
-    for (let i = 0; i < board; i++) {
-        if (board[i]) {
-            board[i].push(currentPlayer.symbol);
-        }
-    }
+    //     if (board[i]) {
+    //         board[i] += currentPlayer.symbol;
+    //         switchPlayer;
+    //     }
+    // }
+
+    // console.log(board);
+
+    // function playTurn(cellId) {
+    //     currentPlayer = (currentPlayer === playerOne) ? playerTwo : playerOne;
+    // }
 })();
