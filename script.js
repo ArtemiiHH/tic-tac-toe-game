@@ -1,14 +1,13 @@
-function Gameboard() {
-    const gameBoard = [];
+const gameBoard = (function Gameboard() {
     const columns = 3;
     const rows = 3;
-};
+    const board = [];
+})();
 
 function Player(name, symbol) {
-    this.name = name;
-    this.symbol = symbol;
+    return { name, symbol };
 };
 
-function gameController() {
-    
-};
+const gameController = (function GameController() {
+
+})();
