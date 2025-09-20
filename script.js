@@ -1,9 +1,11 @@
 const gameBoard = (function Gameboard() {
-    const columns = 3;
     const rows = 3;
+    const columns = 3;
     const board = [];
+    // Cell ID
     let cellId = 0;
 
+    // Get 2D array
     for (let i = 0; i < rows; i++) {
         board[i] = [];
 
@@ -11,11 +13,11 @@ const gameBoard = (function Gameboard() {
             board[i][j] = cellId++;
         }
     }
-
+    // Display 2D array
     console.log(board);
 
     // const getBoard = () => board;
-})();   
+})();
 
 
 
@@ -24,6 +26,18 @@ function Player(name, symbol) {
     return { name, symbol };
 };
 
+
+
+const winPatterns = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [6, 4, 2]
+];
 
 
 
