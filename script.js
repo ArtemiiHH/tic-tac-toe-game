@@ -45,5 +45,13 @@ const gameController = (function GameController() {
     const playerOne = new Player('Tim', 'X');
     const playerTwo = new Player('John', 'O');
 
-    let currentPlayer = playerOne();
+    let currentPlayer = playerOne;
+
+    currentPlayer = (currentPlayer === playerOne) ? playerTwo : playerOne;
+
+    for (let i = 0; i < board; i++) {
+        if (board[i]) {
+            board[i].push(currentPlayer.symbol);
+        }
+    }
 })();
