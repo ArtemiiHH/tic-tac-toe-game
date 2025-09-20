@@ -42,5 +42,8 @@ const winPatterns = [
 
 
 const gameController = (function GameController() {
+    const playerOne = new Player('Tim', 'X');
+    const playerTwo = new Player('John', 'O');
 
+    let currentPlayer = playerOne();
 })();
