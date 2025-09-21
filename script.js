@@ -34,8 +34,8 @@ function Player(name, symbol) {
 // Game controller
 const gameController = (function GameController() {
     // Assign 2 players
-    const playerOne = new Player('Tim', 'X');
-    const playerTwo = new Player('John', 'O');
+    const playerOne = Player('Tim', 'X');
+    const playerTwo = Player('John', 'O');
 
     // Player One starts 1st
     let currentPlayer = playerOne;
@@ -47,14 +47,14 @@ const gameController = (function GameController() {
         const col = cellId % gameBoard.columns;
         const board = gameBoard.getBoard();
 
-        // If chosen cell is a number
+        // If target cell is a number
         if (typeof board[row][col] === 'number') {
             // Add current players symbol
             board[row][col] = currentPlayer.symbol;
             // Switch turn
             currentPlayer = (currentPlayer === playerOne) ? playerTwo : playerOne;
             // Print players move
-            console.log(`${currentPlayer.name}'s turn (${currentPlayer.symbol})`);
+            console.log(`${currentPlayer.name}'s turn now (${currentPlayer.symbol})`);
         } else {
             console.log('Cell already taken');
         }
@@ -66,11 +66,7 @@ gameBoard.updateCell();
 // Display the game board
 console.log(gameBoard.getBoard());
 // Add X or O to a certain position
-gameController(0);
-gameController(3);
-gameController(1);
 gameController(4);
-gameController(2);
 
 
 
@@ -96,7 +92,6 @@ function checkWinner() {
     for (let pattern of winPatterns) {
         // Destructure
         const [a, b, c] = pattern;
-        flatBoard[a], flatBoard[b], flatBoard[c];
 
         if (
             flatBoard[a] === flatBoard[b] &&
