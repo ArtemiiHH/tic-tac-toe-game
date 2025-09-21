@@ -67,13 +67,18 @@ gameBoard.updateCell();
 console.log(gameBoard.getBoard());
 // Add X or O to a certain position
 gameController(0);
+gameController(3);
+gameController(1);
 gameController(4);
+gameController(2);
 
 
 
 // Check Winner
 function checkWinner() {
     const board = gameBoard.getBoard();
+    // Flatten board to 1D
+    const flatBoard = board.flat();
 
     // Win patterns
     const winPatterns = [
@@ -87,15 +92,20 @@ function checkWinner() {
         [6, 4, 2]
     ];
 
-    for (let i = 0; i < board[row]; i++) {
-        if (!typeof board[row] === 'number') {
-            if (
-                board[1][0] === 'X' ||
-                board[1][1] === 'X' ||
-                board[1][2] === 'X'
-            ) {
-                console.log('You win');
-            }
+    // Check all patterns
+    for (let pattern of winPatterns) {
+        // Destructure
+        const [a, b, c] = pattern;
+        flatBoard[a], flatBoard[b], flatBoard[c];
+
+        if (
+            flatBoard[a] === flatBoard[b] &&
+            flatBoard[b] === flatBoard[c] &&
+            typeof flatBoard[a] !== 'number'
+        ) {
+            console.log('You win');
         }
     }
 };
+
+checkWinner();
