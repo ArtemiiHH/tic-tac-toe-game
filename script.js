@@ -53,6 +53,8 @@ const gameController = (function GameController() {
             board[row][col] = currentPlayer.symbol;
             // Switch turn
             currentPlayer = (currentPlayer === playerOne) ? playerTwo : playerOne;
+            // Print players move
+            console.log(`${currentPlayer.name}'s turn (${currentPlayer.symbol})`);
         } else {
             console.log('Cell already taken');
         }
@@ -65,9 +67,7 @@ gameBoard.updateCell();
 console.log(gameBoard.getBoard());
 // Add X or O to a certain position
 gameController(0);
-gameController(1);
-gameController(8);
-gameController(8);
+gameController(4);
 
 
 
