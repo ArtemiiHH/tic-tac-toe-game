@@ -1,34 +1,59 @@
 const gameBoard = (function Gameboard() {
-    const rows = 3;
-    const columns = 3;
+    let rows = 3;
+    let columns = 3;
     const board = [];
-    // Cell ID
-    let cellId = 0;
 
     // Get 2D array
-    return function updateCell() {
+    function updateCell() {
+        let cellId = 0;
+
         for (let i = 0; i < rows; i++) {
             board[i] = [];
 
             for (let j = 0; j < columns; j++) {
                 board[i][j] = cellId++;
             }
-
-            return cellId;
         }
-        // Display 2D array
-        return board;
     }
 
     const getBoard = () => board;
-})();
 
+    return { getBoard, updateCell, columns, rows };
+})();
 
 
 
 function Player(name, symbol) {
     return { name, symbol };
 };
+
+
+
+const gameController = (function GameController() {
+    const playerOne = new Player('Tim', 'X');
+    const playerTwo = new Player('John', 'O');
+
+    let currentPlayer = playerOne;
+
+    return function playTurn(cellId) {
+        const row = Math.floor(cellId / gameBoard.columns);
+        const col = cellId % gameBoard.columns;
+        const board = gameBoard.getBoard();
+
+        if (typeof board[row][col] === 'number') {
+            board[row][col] = currentPlayer.symbol;
+            currentPlayer = (currentPlayer === playerOne) ? playerTwo : playerOne;
+        } else {
+            console.log('Cell already taken');
+        }
+    }
+
+})();
+gameBoard.updateCell();
+console.log(gameBoard.getBoard());
+gameController(0); // should place X at top-left
+gameController(1);
+gameController(8);
 
 
 
@@ -42,28 +67,3 @@ const winPatterns = [
     [0, 4, 8],
     [6, 4, 2]
 ];
-
-
-
-const gameController = (function GameController() {
-    const playerOne = new Player('Tim', 'X');
-    const playerTwo = new Player('John', 'O');
-
-    // Testing code:
-    // let currentPlayer = playerOne;
-
-    // for (let i = 0; i < board; i++) {
-    //     let currentCell = [];
-
-    //     if (board[i]) {
-    //         board[i] += currentPlayer.symbol;
-    //         switchPlayer;
-    //     }
-    // }
-
-    // console.log(board);
-
-    // function playTurn(cellId) {
-    //     currentPlayer = (currentPlayer === playerOne) ? playerTwo : playerOne;
-    // }
-})();
