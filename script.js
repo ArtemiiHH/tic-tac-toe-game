@@ -1,3 +1,4 @@
+// Create game board
 const gameBoard = (function Gameboard() {
     let rows = 3;
     let columns = 3;
@@ -23,25 +24,34 @@ const gameBoard = (function Gameboard() {
 
 
 
+// Player Constructor
 function Player(name, symbol) {
     return { name, symbol };
 };
 
 
 
+// Game controller
 const gameController = (function GameController() {
+    // Assign 2 players
     const playerOne = new Player('Tim', 'X');
     const playerTwo = new Player('John', 'O');
 
+    // Player One starts 1st
     let currentPlayer = playerOne;
 
+    // Player Turns function
     return function playTurn(cellId) {
+        // Find exact cell
         const row = Math.floor(cellId / gameBoard.columns);
         const col = cellId % gameBoard.columns;
         const board = gameBoard.getBoard();
 
+        // If chosen cell is a number
         if (typeof board[row][col] === 'number') {
+            // Add current players symbol
             board[row][col] = currentPlayer.symbol;
+            // Switch turn
             currentPlayer = (currentPlayer === playerOne) ? playerTwo : playerOne;
         } else {
             console.log('Cell already taken');
@@ -49,14 +59,19 @@ const gameController = (function GameController() {
     }
 
 })();
+// Update cell each time
 gameBoard.updateCell();
+// Display the game board
 console.log(gameBoard.getBoard());
-gameController(0); // should place X at top-left
+// Add X or O to a certain position
+gameController(0);
 gameController(1);
+gameController(8);
 gameController(8);
 
 
 
+// Win patterns
 const winPatterns = [
     [0, 1, 2],
     [3, 4, 5],
