@@ -104,3 +104,10 @@ function checkWinner() {
 };
 
 checkWinner();
+
+
+
+// Display DOM logic
+function displayGame() {
+    
+};
