@@ -109,5 +109,5 @@ checkWinner();
 
 // Display DOM logic
 function displayGame() {
-    
+    const cell = document.querySelectorAll('.cell');
 };

@@ -24,12 +24,13 @@ body {
   justify-content: center;
   align-items: center;
   height: 90vh;
+  gap: 20px;
 }
 
 .game-board {
   display: grid;
-  height: 500px;
-  width: 500px;
+  height: 400px;
+  width: 400px;
   padding: 50px;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -56,4 +57,5 @@ body {
 
 .cell:hover {
     background-color: var(--color-cells-hover);
+    cursor: pointer;
 }
