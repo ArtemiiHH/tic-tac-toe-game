@@ -109,5 +109,12 @@ checkWinner();
 
 // Display DOM logic
 function displayGame() {
-    const cell = document.querySelectorAll('.cell');
+    const gameBoard = document.querySelector('.game-board');
+
+    gameBoard.addEventListener('click', (e) => {
+        if (e.target.classList.contains('cell')) {
+            e.target.style.backgroundColor = 'red';
+        }
+    });
 };
+displayGame();
