@@ -33,10 +33,13 @@ body {
   gap: 20px;
   border-radius: 20px;
   background-color: var(--color-board);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.4) 0px -7px 0px inset;
 }
 
 .cell {
   height: auto;
   width: auto;
+  border-radius: 20px;
   background-color: var(--color-cells);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.4) 0px -3px 0px inset;
 }
