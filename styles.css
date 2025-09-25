@@ -23,10 +23,20 @@ body {
   height: 90vh;
 }
 
-.game-board-box {
-  height: 500px;
-  width: 500px;
-  margin: 0 auto;
-  background-color: var(--color-board);
+.game-board {
+  display: grid;
+  height: 600px;
+  width: 600px;
+  padding: 50px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 20px;
   border-radius: 20px;
+  background-color: var(--color-board);
+}
+
+.cell {
+  height: auto;
+  width: auto;
+  background-color: var(--color-cells);
 }
