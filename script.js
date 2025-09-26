@@ -55,6 +55,8 @@ const gameController = (function GameController() {
             currentPlayer = (currentPlayer === playerOne) ? playerTwo : playerOne;
             // Print players move
             console.log(`${currentPlayer.name}'s turn now (${currentPlayer.symbol})`);
+            
+            return currentPlayer.symbol;
         } else {
             console.log('Cell already taken');
         }
@@ -112,8 +114,13 @@ function displayGame() {
     const gameBoard = document.querySelector('.game-board');
 
     gameBoard.addEventListener('click', (e) => {
+        playTurn(cellId);
+        const cellData = Number(e.target.dataset.id);
+
         if (e.target.classList.contains('cell')) {
+            gameController(cellData);
             e.target.style.backgroundColor = 'red';
+            e.target.textContent = symbol;
         }
     });
 };
