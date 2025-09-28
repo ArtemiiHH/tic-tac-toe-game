@@ -51,12 +51,18 @@ const gameController = (function GameController() {
         if (typeof board[row][col] === 'number') {
             // Add current players symbol
             board[row][col] = currentPlayer.symbol;
-            // Switch turn
-            currentPlayer = (currentPlayer === playerOne) ? playerTwo : playerOne;
-            // Print players move
-            console.log(`${currentPlayer.name}'s turn now (${currentPlayer.symbol})`);
 
-            return currentPlayer.symbol;
+            const placed = { symbol: currentPlayer.symbol, name: currentPlayer.name };
+            // Switch turn/player
+            currentPlayer = (currentPlayer === playerOne) ? playerTwo : playerOne;
+
+            return {
+                symbolPlaced: placed.symbol,
+                currentPlayer: placed.name,
+                nextPlayer: currentPlayer.name,
+                nextSymbol: currentPlayer.symbol
+            }
+
         } else {
             console.log('Cell already taken');
         }
@@ -109,6 +115,7 @@ checkWinner();
 
 // Display DOM logic
 function displayGame() {
+    // Grab game board
     const gameBoard = document.querySelector('.game-board');
 
     gameBoard.addEventListener('click', (e) => {
