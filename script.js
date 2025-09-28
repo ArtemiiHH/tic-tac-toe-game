@@ -122,12 +122,12 @@ function displayGame() {
         // Grab cells id and convert to number
         const cellData = Number(e.target.dataset.id);
         // Grab symbol and assign to new variable
-        const symbol = gameController(cellData);
+        const turnInfo = gameController(cellData);
 
         // Target the exact cell
         if (e.target.classList.contains('cell')) {
             e.target.style.backgroundColor = '#fcd8ed';
-            e.target.textContent = symbol;
+            e.target.textContent = turnInfo.symbolPlaced;
         }
     });
 };
