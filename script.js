@@ -26,6 +26,8 @@ const gameBoard = (function Gameboard() {
 
 // Display result text
 const result = document.querySelector('.result-text');
+// Check if game over flag
+let gameOver = false;
 
 
 
@@ -69,7 +71,7 @@ const gameController = (function GameController() {
             }
 
         } else {
-            console.log('Cell already taken');
+            result.textContent = `Cell already taken!`;
         }
     }
 
@@ -109,7 +111,7 @@ function checkWinner() {
             flatBoard[b] === flatBoard[c] &&
             typeof flatBoard[a] !== 'number'
         ) {
-            console.log('You win');
+            // result.textContent = `${currentPlayer.symbol} wins!`;
         }
     }
 };
@@ -126,6 +128,13 @@ function displayGame() {
         const cellData = Number(e.target.dataset.id);
         // Grab symbol and assign to new variable
         const turnInfo = gameController(cellData);
+
+        let winner = checkWinner();
+        if (winner) {
+            return turnInfo.currentPlayer;
+        } else {
+            return null;
+        }
 
         // Target the exact cell
         if (e.target.classList.contains('cell')) {
