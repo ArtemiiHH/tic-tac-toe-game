@@ -82,15 +82,29 @@ h2 {
 .buttons button {
   height: 60px;
   width: 200px;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  font-weight: 500;
   border: none;
   border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.4) 0px -5px 0px inset;
+  color: white;
+}
+
+.buttons button:hover {
+    opacity: 0.7;
 }
 
 .start-btn {
   justify-self: start;
+  background-color: #95D2B3;
 }
 
 .restart-btn {
   justify-self: end;
+  background-color: #55AD9B;
 }
+
+
+
