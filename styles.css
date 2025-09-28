@@ -19,12 +19,11 @@ body {
 }
 
 #container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
   align-items: center;
-  height: 90vh;
-  gap: 20px;
+  justify-content: center;
+  height: 100vh;
 }
 
 .game-board {
@@ -71,4 +70,27 @@ h2 {
   font-size: 2rem;
   margin: 0;
   padding: 10px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.buttons button {
+  height: 60px;
+  width: 200px;
+  font-size: 1.3rem;
+  border: none;
+  border-radius: 10px;
+}
+
+.start-btn {
+  justify-self: start;
+  background-color: ;
+}
+
+.restart-btn {
+    justify-self: end;
 }
