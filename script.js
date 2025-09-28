@@ -67,8 +67,6 @@ const gameController = (function GameController() {
 gameBoard.updateCell();
 // Display the game board
 console.log(gameBoard.getBoard());
-// Add X or O to a certain position
-gameController(4);
 
 
 
@@ -121,7 +119,7 @@ function displayGame() {
 
         // Target the exact cell
         if (e.target.classList.contains('cell')) {
-            // e.target.style.backgroundColor = 'red';
+            e.target.style.backgroundColor = '#fcd8ed';
             e.target.textContent = symbol;
         }
     });
