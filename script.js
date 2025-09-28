@@ -89,6 +89,8 @@ function checkWinner() {
     // Flatten board to 1D
     const flatBoard = board.flat();
 
+    const isBoardFull = flatBoard.every(cell => typeof cell !== 'number');
+
     // Win patterns
     const winPatterns = [
         [0, 1, 2],
@@ -111,9 +113,14 @@ function checkWinner() {
             flatBoard[b] === flatBoard[c] &&
             typeof flatBoard[a] !== 'number'
         ) {
-            // result.textContent = `${currentPlayer.symbol} wins!`;
+            return flatBoard[a];
         }
     }
+
+    if(isBoardFull) {
+        return 'draw';
+    } 
+    return null;
 };
 
 
@@ -124,22 +131,29 @@ function displayGame() {
     const gameBoard = document.querySelector('.game-board');
 
     gameBoard.addEventListener('click', (e) => {
+        if (gameOver) return;
+
         // Grab cells id and convert to number
         const cellData = Number(e.target.dataset.id);
         // Grab symbol and assign to new variable
         const turnInfo = gameController(cellData);
 
-        let winner = checkWinner();
-        if (winner) {
-            return turnInfo.currentPlayer;
-        } else {
-            return null;
-        }
-
         // Target the exact cell
         if (e.target.classList.contains('cell')) {
             e.target.style.backgroundColor = '#fcd8ed';
             e.target.textContent = turnInfo.symbolPlaced;
+            result.textContent = `${turnInfo.nextPlayer}'s turn (${turnInfo.nextSymbol})`;
+        }
+
+        let winner = checkWinner();
+
+        if (winner === 'X' || winner === 'O') {
+            result.textContent = `${winner} won!`;
+            gameOver = true;
+        } else if (winner === 'draw') {
+            result.textContent = `It's a draw`;
+            gameOver = true;
+        } else {
             result.textContent = `${turnInfo.nextPlayer}'s turn (${turnInfo.nextSymbol})`;
         }
     });
