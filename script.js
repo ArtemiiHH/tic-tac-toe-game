@@ -156,22 +156,20 @@ function displayGame() {
             // Display X or O in a pressed cell
             e.target.textContent = turnInfo.symbolPlaced;
             // Display result text
-            result.textContent = `${turnInfo.nextPlayer} plays (${turnInfo.nextSymbol})`;
+            result.textContent = `${turnInfo.nextSymbol}'s turn`;
         }
 
         let winner = checkWinner();
 
-        const playerMap = { X: 'Player 1', O: 'Player 2' };
-
         // Declare winner
         if (winner === 'X' || winner === 'O') {
-            result.textContent = `${playerMap[winner]} wins!`;
+            result.textContent = `${turnInfo.symbolPlaced} wins!`;
             gameOver = true;
         } else if (winner === 'draw') {
             result.textContent = `It's a draw`;
             gameOver = true;
         } else {
-            result.textContent = `${turnInfo.nextPlayer} plays (${turnInfo.nextSymbol})`;
+            result.textContent = `${turnInfo.nextSymbol}'s turn`;
         }
     }
 
