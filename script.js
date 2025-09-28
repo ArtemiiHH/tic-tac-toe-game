@@ -41,8 +41,8 @@ function Player(name, symbol) {
 // Game controller
 const gameController = (function GameController() {
     // Assign 2 players
-    const playerOne = Player('Tim', 'X');
-    const playerTwo = Player('John', 'O');
+    const playerOne = Player('Player 1', 'X');
+    const playerTwo = Player('Player 2', 'O');
 
     // Player One starts 1st
     let currentPlayer = playerOne;
@@ -108,18 +108,21 @@ function checkWinner() {
         // Destructure
         const [a, b, c] = pattern;
 
+        // Check winning combination
         if (
             flatBoard[a] === flatBoard[b] &&
             flatBoard[b] === flatBoard[c] &&
             typeof flatBoard[a] !== 'number'
         ) {
+            // Return winning symbol
             return flatBoard[a];
         }
     }
 
-    if(isBoardFull) {
+    // Check if board is full
+    if (isBoardFull) {
         return 'draw';
-    } 
+    }
     return null;
 };
 
@@ -140,21 +143,27 @@ function displayGame() {
 
         // Target the exact cell
         if (e.target.classList.contains('cell')) {
+            // Change cell color when pressed
             e.target.style.backgroundColor = '#fcd8ed';
+            // Display X or O in a pressed cell
             e.target.textContent = turnInfo.symbolPlaced;
-            result.textContent = `${turnInfo.nextPlayer}'s turn (${turnInfo.nextSymbol})`;
+            // Display result text
+            result.textContent = `${turnInfo.nextPlayer} plays (${turnInfo.nextSymbol})`;
         }
 
         let winner = checkWinner();
 
+        const playerMap = { X: 'Player 1', O: 'Player 2' };
+
+        // Declare winner
         if (winner === 'X' || winner === 'O') {
-            result.textContent = `${winner} won!`;
+            result.textContent = `${playerMap[winner]} wins!`;
             gameOver = true;
         } else if (winner === 'draw') {
             result.textContent = `It's a draw`;
             gameOver = true;
         } else {
-            result.textContent = `${turnInfo.nextPlayer}'s turn (${turnInfo.nextSymbol})`;
+            result.textContent = `${turnInfo.nextPlayer} plays (${turnInfo.nextSymbol})`;
         }
     });
 };
