@@ -130,16 +130,24 @@ function checkWinner() {
 
 // Display DOM logic
 function displayGame() {
-    // Grab game board
-    const gameBoard = document.querySelector('.game-board');
+    // Grab game board element
+    const gameBoardEl = document.querySelector('.game-board');
+    // Restart button
+    const restartBtn = document.querySelector('.restart-btn');
 
-    gameBoard.addEventListener('click', (e) => {
+    gameBoardEl.addEventListener('click', cellClick);
+    restartBtn.addEventListener('click', restartGame);
+
+    // Cell click function
+    function cellClick(e) {
         if (gameOver) return;
 
         // Grab cells id and convert to number
         const cellData = Number(e.target.dataset.id);
         // Grab symbol and assign to new variable
         const turnInfo = gameController(cellData);
+
+        if (!turnInfo) return;
 
         // Target the exact cell
         if (e.target.classList.contains('cell')) {
@@ -165,6 +173,17 @@ function displayGame() {
         } else {
             result.textContent = `${turnInfo.nextPlayer} plays (${turnInfo.nextSymbol})`;
         }
-    });
-};
+    }
+
+    // Reset game function
+    function restartGame() {
+        gameBoard.updateCell();
+        document.querySelectorAll('.cell').forEach(cell => {
+            cell.textContent = '';
+            cell.style.backgroundColor = '';
+        });
+        result.textContent = 'New game! X goes first';
+        gameOver = false;
+    }
+}
 displayGame();

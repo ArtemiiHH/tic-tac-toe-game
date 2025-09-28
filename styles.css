@@ -89,7 +89,7 @@ h2 {
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.4) 0px -5px 0px inset;
-  color: white;
+  color: rgb(41, 41, 41);
 }
 
 .buttons button:hover {
@@ -98,12 +98,12 @@ h2 {
 
 .start-btn {
   justify-self: start;
-  background-color: #95D2B3;
+  background-color: var(--color-x);
 }
 
 .restart-btn {
   justify-self: end;
-  background-color: #55AD9B;
+  background-color: #F08787;
 }
 
 
