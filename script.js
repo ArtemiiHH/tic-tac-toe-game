@@ -24,6 +24,11 @@ const gameBoard = (function Gameboard() {
 
 
 
+// Display result text
+const result = document.querySelector('.result-text');
+
+
+
 // Player Constructor
 function Player(name, symbol) {
     return { name, symbol };
@@ -109,8 +114,6 @@ function checkWinner() {
     }
 };
 
-checkWinner();
-
 
 
 // Display DOM logic
@@ -128,6 +131,7 @@ function displayGame() {
         if (e.target.classList.contains('cell')) {
             e.target.style.backgroundColor = '#fcd8ed';
             e.target.textContent = turnInfo.symbolPlaced;
+            result.textContent = `${turnInfo.nextPlayer}'s turn (${turnInfo.nextSymbol})`;
         }
     });
 };
