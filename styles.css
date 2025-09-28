@@ -4,7 +4,7 @@
   --color-bg: #687fe5;
   --color-board: #ebd6fb;
   --color-cells: #feebf6;
-  --color-cells-hover: #fcd8ed; 
+  --color-cells-hover: #fcd8ed;
   --color-x: #fcd8cd;
   --color-o: #687fe5;
 }
@@ -29,16 +29,22 @@ body {
 
 .game-board {
   display: grid;
-  height: 400px;
+  grid-template-rows: 10fr 1fr;
+  height: 500px;
   width: 400px;
   padding: 50px;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
   gap: 30px;
   border-radius: 20px;
   background-color: var(--color-board);
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.4) 0px -7px 0px inset;
+}
+
+.all-cells {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
 
 .cell {
@@ -56,6 +62,13 @@ body {
 }
 
 .cell:hover {
-    background-color: var(--color-cells-hover);
-    cursor: pointer;
+  background-color: var(--color-cells-hover);
+  cursor: pointer;
+}
+
+h2 {
+  color: var(--color-bg);
+  font-size: 2rem;
+  margin: 0;
+  padding: 10px;
 }
