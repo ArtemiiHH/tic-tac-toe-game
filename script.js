@@ -32,8 +32,8 @@ let gameOver = false;
 
 
 // Player Constructor
-function Player(name, symbol) {
-    return { name, symbol };
+function Player(name, symbol, color) {
+    return { name, symbol, color };
 };
 
 
@@ -41,8 +41,8 @@ function Player(name, symbol) {
 // Game controller
 const gameController = (function GameController() {
     // Assign 2 players
-    const playerOne = Player('Player 1', 'X');
-    const playerTwo = Player('Player 2', 'O');
+    const playerOne = Player('Player 1', 'X', '#F08787');
+    const playerTwo = Player('Player 2', 'O', '#687fe5');
 
     // Player One starts 1st
     let currentPlayer = playerOne;
@@ -67,7 +67,8 @@ const gameController = (function GameController() {
                 symbolPlaced: placed.symbol,
                 currentPlayer: placed.name,
                 nextPlayer: currentPlayer.name,
-                nextSymbol: currentPlayer.symbol
+                nextSymbol: currentPlayer.symbol,
+                playerColor: currentPlayer.color
             }
 
         } else {
@@ -159,6 +160,8 @@ function displayGame() {
         if (e.target.classList.contains('cell')) {
             // Change cell color when pressed
             e.target.style.backgroundColor = '#fcd8ed';
+            // Change X or O colors
+            e.target.style.color = turnInfo.playerColor;
             // Display X or O in a pressed cell
             e.target.textContent = turnInfo.symbolPlaced;
             // Display result text
