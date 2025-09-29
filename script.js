@@ -48,7 +48,7 @@ const gameController = (function GameController() {
     let currentPlayer = playerOne;
 
     // Player Turns function
-    return function playTurn(cellId) {
+    function playTurn(cellId) {
         // Find exact cell
         const row = Math.floor(cellId / gameBoard.columns);
         const col = cellId % gameBoard.columns;
@@ -75,6 +75,12 @@ const gameController = (function GameController() {
         }
     }
 
+    // Reset turn back to Player 1 (X)
+    function resetTurn() {
+        currentPlayer = playerOne;
+    }
+
+    return { playTurn, resetTurn };
 })();
 // Update cell each time
 gameBoard.updateCell();
@@ -145,7 +151,7 @@ function displayGame() {
         // Grab cells id and convert to number
         const cellData = Number(e.target.dataset.id);
         // Grab symbol and assign to new variable
-        const turnInfo = gameController(cellData);
+        const turnInfo = gameController.playTurn(cellData);
 
         if (!turnInfo) return;
 
@@ -156,7 +162,7 @@ function displayGame() {
             // Display X or O in a pressed cell
             e.target.textContent = turnInfo.symbolPlaced;
             // Display result text
-            result.textContent = `${turnInfo.nextSymbol}'s turn`;
+            result.textContent = `${turnInfo.nextSymbol}'s turn now`;
         }
 
         let winner = checkWinner();
@@ -169,13 +175,14 @@ function displayGame() {
             result.textContent = `It's a draw`;
             gameOver = true;
         } else {
-            result.textContent = `${turnInfo.nextSymbol}'s turn`;
+            result.textContent = `${turnInfo.nextSymbol}'s turn now`;
         }
     }
 
     // Reset game function
     function restartGame() {
         gameBoard.updateCell();
+        gameController.resetTurn();
         document.querySelectorAll('.cell').forEach(cell => {
             cell.textContent = '';
             cell.style.backgroundColor = '';
