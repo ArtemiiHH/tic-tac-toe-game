@@ -77,16 +77,9 @@ h2 {
   padding: 10px;
 }
 
-/* Button grid */
-.buttons {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.buttons button {
+.restart-btn {
   height: 60px;
-  width: 200px;
+  width: 100%;
   font-size: 1.4rem;
   letter-spacing: 1px;
   font-weight: 500;
@@ -95,18 +88,10 @@ h2 {
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.4) 0px -5px 0px inset;
   color: rgb(41, 41, 41);
+  background-color: #f08787;
+  justify-self: center;
 }
 
-.buttons button:hover {
-    opacity: 0.7;
-}
-
-.start-btn {
-  justify-self: start;
-  background-color: var(--color-x);
-}
-
-.restart-btn {
-  justify-self: end;
-  background-color: #F08787;
+.restart-btn:hover {
+  opacity: 0.7;
 }
