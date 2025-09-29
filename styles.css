@@ -23,7 +23,7 @@ body {
   grid-template-rows: repeat(3, 1fr);
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 90vh;
   gap: 20px;
 }
 
@@ -68,6 +68,12 @@ body {
   cursor: pointer;
 }
 
+h1 {
+    font-size: 3rem;
+    font-weight: 500;
+    font-style: italic;
+}
+
 /* Result text */
 h2 {
   color: black;
@@ -80,15 +86,15 @@ h2 {
 .restart-btn {
   height: 60px;
   width: 100%;
-  font-size: 1.4rem;
-  letter-spacing: 1px;
+  font-size: 1.5rem;
   font-weight: 500;
+  font-style: italic;
   border: none;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.4) 0px -5px 0px inset;
-  color: rgb(41, 41, 41);
-  background-color: #f08787;
+  color: white;
+  background-color: #896C6C;
   justify-self: center;
 }
 
