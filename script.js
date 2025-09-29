@@ -182,7 +182,9 @@ function displayGame() {
     // Reset game function
     function restartGame() {
         gameBoard.updateCell();
+        // Reset turn
         gameController.resetTurn();
+        // Clean cells
         document.querySelectorAll('.cell').forEach(cell => {
             cell.textContent = '';
             cell.style.backgroundColor = '';
